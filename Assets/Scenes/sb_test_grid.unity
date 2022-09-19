@@ -17998,6 +17998,7 @@ GameObject:
   - component: {fileID: 1485852913}
   - component: {fileID: 1485852916}
   - component: {fileID: 1485852912}
+  - component: {fileID: 1485852915}
   m_Layer: 0
   m_Name: Player.empty
   m_TagString: Untagged
@@ -18032,11 +18033,11 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.05
+  m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.02
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1485852913
@@ -18070,6 +18071,36 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"playerCamera","value":null,"$version":"A"},{"name":"playerMass","value":null,"$version":"A"},{"name":"playerSpeed","value":null,"$version":"A"},{"name":"playerSprintMul","value":null,"$version":"A"},{"name":"playerWalkMul","value":null,"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
+--- !u!114 &1485852915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485852910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993b7413b400a3442aed57dd074ed229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 467675865}
+  Legs: {fileID: 0}
+  Controller: {fileID: 1485852912}
+  move: {x: 0, y: 0, z: 0}
+  velocity: 0
+  MoveSpeed: 100
+  CameraSensitivity: 2
+  cameraSmoothing: 5
+  JumpPower: 1
+  bunnyHop: 1
+  SprintSpeed: 1.5
+  pushing: 0
+  MouseX: 0
+  MouseY: 0
+  isGrounded: 0
+  PlayerX: 0
+  PlayerY: 0
+  groundDistance: 1.1
 --- !u!136 &1485852916
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18079,7 +18110,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1485852910}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
