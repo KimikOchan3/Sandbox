@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637972530391451532
-    m_Hash: 3527866027
+      ticks: 637991920773369927
+    m_Hash: 4273108542
   m_LockFileStatus:
     m_FilePath: C:/Users/evges/Sandbox/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637972530392800703
-    m_Hash: 2163658474
+      ticks: 637991921800645063
+    m_Hash: 280838771
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -158,12 +158,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
         revision: 14d129dcc778f8ea2fdf9d0240b47924e4f0dbb1
         path: 
-    - packageId: com.unity.ide.rider@2.0.7
+    - packageId: com.unity.ide.rider@3.0.15
       testable: 0
       isDirectDependency: 1
-      version: 2.0.7
+      version: 3.0.15
       source: 1
-      resolvedPath: C:\Users\evges\Sandbox\Library\PackageCache\com.unity.ide.rider@2.0.7
+      resolvedPath: C:\Users\evges\Sandbox\Library\PackageCache\com.unity.ide.rider@3.0.15
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -243,19 +243,13 @@ m_PackageAssets:
         - 3.0.13
         - 3.0.14
         - 3.0.15
-        verified: 2.0.7
+        verified: 3.0.15
       dependencies:
-      - name: com.unity.test-framework
-        version: 1.1.1
-      resolvedDependencies:
-      - name: com.unity.test-framework
-        version: 1.1.31
       - name: com.unity.ext.nunit
         version: 1.0.6
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.modules.jsonserialize
-        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.ext.nunit
+        version: 1.0.6
       keywords: []
       registry:
         id: main
@@ -269,13 +263,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637334461080000000
+      datePublishedTicks: 637914298700000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-        revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
+        revision: b61ff0378932fdf03b5891e09c91728337de674c
         path: 
     - packageId: com.unity.ide.visualstudio@2.0.16
       testable: 0
@@ -3653,4 +3647,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: C:/Users/evges/Sandbox/Packages
-m_EditorVersion: 2020.3.38f1 (8f5fde82e2dc)
+m_EditorVersion: 2020.3.39f1 (fd6670bb8be9)

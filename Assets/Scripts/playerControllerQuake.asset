@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1893448595, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: playerControllerQuake
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":-149.0,"y":111.1566},"zoom":1.0,"elements":[{"coroutine":false,"defaultValues":{"key":{"$content":"W","$type":"UnityEngine.KeyCode"},"action":{"$content":"Hold","$type":"Ludiq.PressState"}},"position":{"x":-420.0,"y":262.0},"guid":"a2819ff5-dbe4-48ae-958b-c10fe0010ffd","$version":"A","$type":"Bolt.OnKeyboardInput"},{"coroutine":false,"defaultValues":{"key":{"$content":"D","$type":"UnityEngine.KeyCode"},"action":{"$content":"Hold","$type":"Ludiq.PressState"}},"position":{"x":-421.0,"y":409.0},"guid":"c4aa5ae2-c941-4582-9da8-d4c165ac569c","$version":"A","$type":"Bolt.OnKeyboardInput"},{"coroutine":false,"defaultValues":{"key":{"$content":"S","$type":"UnityEngine.KeyCode"},"action":{"$content":"Hold","$type":"Ludiq.PressState"}},"position":{"x":-421.0,"y":542.0},"guid":"25dc647a-c8df-48dc-b0cc-66cbd9d64c08","$version":"A","$type":"Bolt.OnKeyboardInput"},{"coroutine":false,"defaultValues":{"key":{"$content":"A","$type":"UnityEngine.KeyCode"},"action":{"$content":"Hold","$type":"Ludiq.PressState"}},"position":{"x":-418.0,"y":690.0},"guid":"0920ebad-4759-49f8-ae1a-d60b7b821e5b","$version":"A","$type":"Bolt.OnKeyboardInput"},{"member":{"name":"right","parameterTypes":null,"targetType":"UnityEngine.Transform","targetTypeName":"UnityEngine.Transform","$version":"A"},"defaultValues":{"target":null},"position":{"x":-399.0,"y":143.0},"guid":"1abb2523-f0f5-4b8c-8f2f-ac65132eeec7","$version":"A","$type":"Bolt.GetMember"},{"member":{"name":"forward","parameterTypes":null,"targetType":"UnityEngine.Transform","targetTypeName":"UnityEngine.Transform","$version":"A"},"defaultValues":{"target":null},"position":{"x":-402.0,"y":23.0},"guid":"a6570255-e012-4b9e-92d8-882c9ec1a08b","$version":"A","$type":"Bolt.GetMember"},{"coroutine":false,"defaultValues":{},"position":{"x":-379.0,"y":-229.0},"guid":"8025bcab-0f9d-49bd-becb-dadff5aa9d11","$version":"A","$type":"Bolt.Update","$id":"23"},{"chainable":false,"member":{"name":"Move","parameterTypes":["UnityEngine.Vector3"],"targetType":"UnityEngine.CharacterController","targetTypeName":"UnityEngine.CharacterController","$version":"A"},"defaultValues":{"target":null,"%motion":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"}},"position":{"x":-166.0,"y":-226.0},"guid":"35f3b24e-5e20-41d5-8967-77857af73d4a","$version":"A","$type":"Bolt.InvokeMember","$id":"25"},{"sourceUnit":{"$ref":"23"},"sourceKey":"trigger","destinationUnit":{"$ref":"25"},"destinationKey":"enter","guid":"96a630fa-ca22-4ca0-8d84-6dfc3d62d511","$type":"Bolt.ControlConnection"}],"$version":"A"}}'
+    _objectReferences: []
