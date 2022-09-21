@@ -3,142 +3,137 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public GameObject Camera;
-    public GameObject Legs;
-    public UnityEngine.CharacterController Controller;
-    public Vector3 move;
-    public float velocity;
-    private float Gravity = 9.81f;
-    public float MoveSpeed = 1f;
-    public float CameraSensitivity = 2f;
-    public float cameraSmoothing = 5f;
-    public float JumpPower = 1f;
-    public float bunnyHop = 1f;
+    public CharacterController Controller;
+    private Vector3 movement;
+
+    public float moveSpeed = 2f;
     public float SprintSpeed = 1.5f;
-    public bool pushing = false;
-    // private float StairsHeight = 0.5f; Пока что бесполезняк
-    public float MouseX = 0f;
-    public float MouseY = 0f;
-    private float MinMouseY = -90f;
-    private float MaxMouseY = 90f;
-    public bool isGrounded;
-    public float PlayerX;
-    public float PlayerY;
-    public float groundDistance = 1.1f;
-    private float speed;
-    private Quaternion cameraLogic;
-    private Quaternion playerLogic;
+    public float jumpPower = 1f;
+    public float bunnyHop = 1f;
+    public float bunnyHopLimit = 5f;
+    [Tooltip("Сколько добавляется при каждом прыжке")]
+    public float bunnyHopJump = 0.5f;
+    [Tooltip("Сколько отнимается при остановке распрыжки")]
+    public float bunnyHopStop = 0.05f;
+    public float cameraSensitivity = 2f;
+    public float cameraSmoothing = 15f;
+    public float minMouseX = -80f;
+    public float maxMouseX = 80f;
+    public bool pushing = false;    //Неготовая система толкания
+    private float playerX;
+    private float playerZ;
+    private float mouseX = 0f;
+    private float mouseY = 0f;
+    private bool isGrounded;
+    private float Gravity = 9.81f;
 
     void Start()
     {
         Debug.Log("Player Controller started!");
 
-        Application.targetFrameRate = 60;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        MouseX += Input.GetAxis("Mouse X") * CameraSensitivity;
-        MouseY += Input.GetAxis("Mouse Y") * CameraSensitivity;
+        //Кординаты камеры
+        mouseX += Input.GetAxis("Mouse Y") * cameraSensitivity;
+        mouseY += Input.GetAxis("Mouse X") * cameraSensitivity;
 
-        if(MouseX > 359.9f)
-            MouseX = 0;
-        if(MouseX < 0)
-            MouseX = 359.9f;
+        //Смещение камеры
+        // Camera.transform.TransformDirection(Vector3.up * Mathf.Clamp(movement.y, -0.2f, 0.2f));
 
-        MouseY = Mathf.Clamp(MouseY, MinMouseY, MaxMouseY);
+        //Ограничения поворота камеры
+        if(mouseY > 359.9f)
+            mouseY = 0;
+        if(mouseY < 0)
+            mouseY = 359.9f;
 
-        Quaternion playerTarget = Quaternion.Euler(0, MouseX, 0);
-        playerLogic = Quaternion.Slerp(transform.rotation, playerTarget, Time.deltaTime * cameraSmoothing);
+        mouseX = Mathf.Clamp(mouseX, minMouseX, maxMouseX);
+
+        //Плавный поворот камеры
+        Quaternion playerTarget = Quaternion.Euler(0, mouseY, 0);
+        Quaternion playerLogic = Quaternion.Slerp(transform.rotation, playerTarget, Time.deltaTime * cameraSmoothing);
         
-        Quaternion cameraTarget = Quaternion.Euler(-MouseY, MouseX, 0);
-        cameraLogic = Quaternion.Slerp(Camera.transform.rotation, cameraTarget, Time.deltaTime * cameraSmoothing);
+        Quaternion cameraTarget = Quaternion.Euler(-mouseX, mouseY, 0);
+        Quaternion cameraLogic = Quaternion.Slerp(Camera.transform.rotation, cameraTarget, Time.deltaTime * cameraSmoothing);
         transform.rotation = playerLogic;
         Camera.transform.rotation = cameraLogic;
 
-        PlayerX = Input.GetAxis("Horizontal") * bunnyHop * MoveSpeed * Time.deltaTime;
-        PlayerY = Input.GetAxis("Vertical") * bunnyHop * MoveSpeed * Time.deltaTime;
+        //Вектор ходьбы
+        playerX = Input.GetAxis("Horizontal") * bunnyHop * moveSpeed;
+        playerZ = Input.GetAxis("Vertical") * bunnyHop * moveSpeed;
+        movement = transform.up * movement.y + transform.right * playerX  + transform.forward * playerZ;
+        Debug.Log(movement);
+
+        //Гравитация
+        movement.y -= Gravity * Time.deltaTime;
         
-        move.y -= Gravity * Time.deltaTime;
-        if(isGrounded && Input.GetKeyDown(KeyCode.Space))
-            {
-            if(bunnyHop<2)
-                bunnyHop += 0.2f;
-            PlayerJump();
-            }
-        
-        PlayerMove();
-        // GroundDetection();
+        //Проверка нахождения на земле
+        if(isGrounded && movement.y < 0)
+        {
+            movement.y = -0.1f;
+        }
+
         isGrounded = Controller.isGrounded;
 
+        //Системы
+        PlayerMove();
 
-        // if(!Controller.isGrounded)
-        // {
-        //     move.y += -Gravity * Time.deltaTime;       
-        // }
+        if(isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            if(bunnyHop < bunnyHopLimit)
+                bunnyHop += bunnyHopJump;
+            
+            PlayerJump();
+        }
     }
 
     void FixedUpdate()
     {
-        if(isGrounded)
-        {
-            if(move.y<0)
-                move.y = 0f;
-            if(bunnyHop>1)
-                bunnyHop -= 0.05f;            
-        }
-
-        bunnyHop = Mathf.Clamp(bunnyHop, 1, 2);
+        BunnyHop();
     }
+
+//Система прыжка
     void PlayerJump()
     {
-        // rb.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
-        // velocity += Mathf.Sqrt(JumpPower * 3f * Gravity);
-        move.y += Mathf.Sqrt(JumpPower * 3f * Gravity);
-        
+        movement.y += Mathf.Sqrt(jumpPower * Gravity);
     }
+
+//Система перемещения
     void PlayerMove()
     {
-        // velocity += -Gravity * Time.deltaTime;
-        move.y += -Gravity * Time.deltaTime;
-        move = transform.up * move.y + transform.right * PlayerX + transform.forward * PlayerY;
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            // rb.velocity = transform.TransformDirection(new Vector3(PlayerX * SprintSpeed, rb.velocity.y, PlayerY * SprintSpeed));
-            Controller.Move(move * SprintSpeed*  Time.deltaTime);
+            movement.x *= SprintSpeed;
+            movement.z *= SprintSpeed;
+            Controller.Move(movement * Time.deltaTime);
         }
-
         else
         {
-            // rb.velocity = transform.TransformDirection(new Vector3(PlayerX, rb.velocity.y, PlayerY));
-            Controller.Move(move * Time.deltaTime);
+            Controller.Move(movement * Time.deltaTime);
         }
     }
 
+//Система распрыжки
+    void BunnyHop()
+    {
+        if(isGrounded && bunnyHop > 1)
+            bunnyHop -= bunnyHopStop;
+
+        bunnyHop = Mathf.Clamp(bunnyHop, 1, 5);
+    }
+
+//Альфа версия системы толкания
     void OnControllerColliderHit(ControllerColliderHit obj)
     {
-        //Не лезь, оно тебе не надо!
         if(obj.rigidbody && pushing)
         {
             Rigidbody hit = obj.collider.attachedRigidbody;
-            // hit.AddForceAtPosition(transform.forward, transform.position * 0.2f, ForceMode.Impulse);
             Debug.Log("PUSH!");
             hit.AddForce(transform.forward * 0.5f, ForceMode.Impulse);
         }
         
     }
-    // void GroundDetection()
-    // {
-    //     if(Physics.Raycast(transform.position, Vector3.down, groundDistance))
-    //     {
-    //         isGrounded = true;
-
-    //     }
-    //     else
-    //     {
-    //         isGrounded = false;
-
-    //     }
-    // }
 }
