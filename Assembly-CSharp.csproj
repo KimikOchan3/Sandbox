@@ -760,6 +760,9 @@
  <Reference Include="System.Xml.XPath.XDocument">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.39f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Editor">
+ <HintPath>C:/Users/evges/Sandbox/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/evges/Sandbox/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -777,6 +780,9 @@
  </Reference>
  <Reference Include="Unity.ProBuilder.AddOns.Editor">
  <HintPath>C:/Users/evges/Sandbox/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.VisualEffectGraph.Runtime">
+ <HintPath>C:/Users/evges/Sandbox/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>C:/Users/evges/Sandbox/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
