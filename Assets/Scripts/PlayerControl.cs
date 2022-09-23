@@ -4,7 +4,7 @@ public class PlayerControl : MonoBehaviour
 {
     public GameObject Camera;
     public CharacterController Controller;
-    public Collider roofCollider;
+    public GameObject roofCollider;
     private Vector3 movement;
 
     public float moveSpeed = 2f;
@@ -105,6 +105,11 @@ public class PlayerControl : MonoBehaviour
                 bunnyHop += bunnyHopJump;
             }
         }
+
+        if(Physics.Raycast(roofCollider.transform.position, Vector3.up, 0.1f) && movement.y > 0f)
+        {
+            movement.y = -movement.y/2;
+        }
     }
 
 //Система перемещения
@@ -132,16 +137,5 @@ public class PlayerControl : MonoBehaviour
             bunnyHop -= bunnyHopStop;
 
         bunnyHop = Mathf.Clamp(bunnyHop, 1, 5);
-    }
-
-//Альфа версия системы толкания
-    void OnControllerColliderHit(ControllerColliderHit obj)
-    {
-        if(obj.rigidbody && pushing)
-        {
-            Rigidbody hit = obj.collider.attachedRigidbody;
-            Debug.Log("PUSH!");
-            hit.AddForce(transform.forward * 0.5f, ForceMode.Impulse);
-        }  
     }
 }
