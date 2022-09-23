@@ -133,7 +133,7 @@ public class PlayerControl : MonoBehaviour
 //Система распрыжки
     void BunnyHop()
     {
-        if(isGrounded && bunnyHop > 1)
+        if(isGrounded && bunnyHop > 1f)
             bunnyHop -= bunnyHopStop;
 
         bunnyHop = Mathf.Clamp(bunnyHop, 1, 5);
