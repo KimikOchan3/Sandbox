@@ -4,6 +4,7 @@ public class PlayerControl : MonoBehaviour
 {
     public GameObject Camera;
     public CharacterController Controller;
+    public Collider roofCollider;
     private Vector3 movement;
 
     public float moveSpeed = 2f;
@@ -25,6 +26,7 @@ public class PlayerControl : MonoBehaviour
     private float mouseX = 0f;
     private float mouseY = 0f;
     private bool isGrounded;
+    private bool isJumping;
     private float Gravity = 9.81f;
 
     void Start()
@@ -52,67 +54,74 @@ public class PlayerControl : MonoBehaviour
 
         mouseX = Mathf.Clamp(mouseX, minMouseX, maxMouseX);
 
-        //Плавный поворот камеры
-        Quaternion playerTarget = Quaternion.Euler(0, mouseY, 0);
-        Quaternion playerLogic = Quaternion.Slerp(transform.rotation, playerTarget, Time.deltaTime * cameraSmoothing);
-        
-        Quaternion cameraTarget = Quaternion.Euler(-mouseX, mouseY, 0);
-        Quaternion cameraLogic = Quaternion.Slerp(Camera.transform.rotation, cameraTarget, Time.deltaTime * cameraSmoothing);
-        transform.rotation = playerLogic;
-        Camera.transform.rotation = cameraLogic;
-
-        //Вектор ходьбы
-        playerX = Input.GetAxis("Horizontal") * bunnyHop * moveSpeed;
-        playerZ = Input.GetAxis("Vertical") * bunnyHop * moveSpeed;
-        movement = transform.up * movement.y + transform.right * playerX  + transform.forward * playerZ;
-        Debug.Log(movement);
-
-        //Гравитация
-        movement.y -= Gravity * Time.deltaTime;
-        
-        //Проверка нахождения на земле
-        if(isGrounded && movement.y < 0)
-        {
-            movement.y = -0.1f;
-        }
-
-        isGrounded = Controller.isGrounded;
-
         //Системы
-        PlayerMove();
-
         if(isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            if(bunnyHop < bunnyHopLimit)
-                bunnyHop += bunnyHopJump;
-            
-            PlayerJump();
+            isJumping = true;
         }
     }
 
     void FixedUpdate()
     {
+        isGrounded = Controller.isGrounded;
+
+        movement.y -= Gravity * Time.fixedDeltaTime;
+
+        if(isGrounded && movement.y < 0)
+        {
+            movement.y = -0.1f;
+        }
+
+        PlayerMove();
+        PlayerJump();
         BunnyHop();
+    }
+
+    void LateUpdate()
+    {
+        Quaternion playerTarget = Quaternion.Euler(0, mouseY, 0);
+        Quaternion playerLogic = Quaternion.Slerp(transform.rotation, playerTarget, Time.fixedDeltaTime * cameraSmoothing);
+        
+        Quaternion cameraTarget = Quaternion.Euler(-mouseX, mouseY, 0);
+        Quaternion cameraLogic = Quaternion.Slerp(Camera.transform.rotation, cameraTarget, Time.fixedDeltaTime * cameraSmoothing);
+        transform.rotation = playerLogic;
+        Camera.transform.rotation = cameraLogic; 
+
+        if(Input.GetKeyDown(KeyCode.Space))
+            isJumping = true;
     }
 
 //Система прыжка
     void PlayerJump()
     {
-        movement.y += Mathf.Sqrt(jumpPower * Gravity);
+        if(isGrounded && isJumping)
+        {
+            isJumping = false;
+
+            movement.y += Mathf.Sqrt(jumpPower * Gravity);
+            
+            if(bunnyHop < bunnyHopLimit)
+            {
+                bunnyHop += bunnyHopJump;
+            }
+        }
     }
 
 //Система перемещения
     void PlayerMove()
     {
+        movement = (Vector3.ClampMagnitude(transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical"), 1f) * moveSpeed * bunnyHop + transform.up * movement.y);
+        Debug.Log(movement);
+
         if(Input.GetKey(KeyCode.LeftShift))
         {
             movement.x *= SprintSpeed;
             movement.z *= SprintSpeed;
-            Controller.Move(movement * Time.deltaTime);
+            Controller.Move(movement * Time.fixedDeltaTime);
         }
         else
         {
-            Controller.Move(movement * Time.deltaTime);
+            Controller.Move(movement * Time.fixedDeltaTime);
         }
     }
 
@@ -133,7 +142,6 @@ public class PlayerControl : MonoBehaviour
             Rigidbody hit = obj.collider.attachedRigidbody;
             Debug.Log("PUSH!");
             hit.AddForce(transform.forward * 0.5f, ForceMode.Impulse);
-        }
-        
+        }  
     }
 }
