@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Wall WIP
+  m_Shader: {fileID: -6465566751694194690, guid: 180ab3a57ee912b4890c7e9ff1ca87a5, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ParallaxMapping_0733cfc1d9b1407c8cede1056e2dc822_Heightmap_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMapping_32129bd1bc334fb89056d97b651bf206_Heightmap_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMapping_4fbda051d1944b03bf4e046774fd5807_Heightmap_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMapping_b29f074bcc844a26ac29c9575578d977_Heightmap_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMapping_f1ea266fb5dc4ce8890ff8ba438b51be_Heightmap_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5a495c828a5342a287a158987d0c2129_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 29fdcaddb41068d4db8f2cecb538bc29, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_dc2b6369fb2348e7b2d94ecc461d7ab2_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 29fdcaddb41068d4db8f2cecb538bc29, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_45cae1de715843d88161d38726ac50e2: 45
+    m_Colors:
+    - Color_236387ad312443babb0cee08ec473bcd: {r: 2.4, g: 2.9960785, b: 0, a: 1}
+    - Color_a185391d9d544f1b92e2f9322ee411f7: {r: 2.6701572, g: 0.4473562, b: 0, a: 0}
+    - Vector2_28f576e1b6cb486dbb12bc298d09e08e: {r: -0.64, g: -1.54, b: 0, a: 0}
+    - Vector2_b12796724eee4dbe940a5e372dc449b6: {r: 0.75, g: 1.5, b: 0, a: 0}
+    - Vector2_b42af51c3fc746788eb092acec27dd4a: {r: 0, g: 0.25, b: 0, a: 0}
+    - Vector2_dc542d1d20bd4c84838a2b837c006dee: {r: 0, g: 4, b: 0, a: 0}
+  m_BuildTextureStacks: []
