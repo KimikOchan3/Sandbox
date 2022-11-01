@@ -28,6 +28,10 @@ public class PlayerControl : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private float Gravity = 9.81f;
+	
+	// !!ЭТО КОСТЫЛИ!! (скорее всего), !!ИЗМЕНИТЬ ПО ВОЗМОЖНОСТИ!!
+	
+	public bool CamRotEnabled = true;
 
     void Start()
     {
@@ -39,21 +43,26 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        //Кординаты камеры
-        mouseX += Input.GetAxis("Mouse Y") * cameraSensitivity;
-        mouseY += Input.GetAxis("Mouse X") * cameraSensitivity;
+		// !!ЭТО КОСТЫЛЬ!! (скорее всего), !!ИЗМЕНИТЬ ПО ВОЗМОЖНОСТИ!!
+		if(CamRotEnabled){
+			//Кординаты камеры
+			mouseX += Input.GetAxis("Mouse Y") * cameraSensitivity;
+			mouseY += Input.GetAxis("Mouse X") * cameraSensitivity;
 
-        //Смещение камеры
-        // Camera.transform.TransformDirection(Vector3.up * Mathf.Clamp(movement.y, -0.2f, 0.2f));
-
-        //Ограничения поворота камеры
-        if(mouseY > 359.9f)
-            mouseY = 0;
-        if(mouseY < 0)
-            mouseY = 359.9f;
-
-        mouseX = Mathf.Clamp(mouseX, minMouseX, maxMouseX);
-
+			//Смещение камеры
+			// Camera.transform.TransformDirection(Vector3.up * Mathf.Clamp(movement.y, -0.2f, 0.2f));
+	
+			//Ограничения поворота камеры
+			// Yuko: может лучше будет ограничения через переменные сделать?
+			// Снова я: там рузя недовольно фыркал что ты X через clamp сделал а Y через if
+			if(mouseY > 359.9f)
+				mouseY = 0;
+			if(mouseY < 0)
+				mouseY = 359.9f;
+	
+			mouseX = Mathf.Clamp(mouseX, minMouseX, maxMouseX);
+		}
+		
         //Системы
         if(isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
@@ -138,4 +147,15 @@ public class PlayerControl : MonoBehaviour
 
         bunnyHop = Mathf.Clamp(bunnyHop, 1, 5);
     }
+}
+
+//Самый костыльный костыль
+public static void EnableCR()
+{
+    CamRotEnabled = true;
+}
+
+public static void DisableCR()
+{
+    CamRotEnabled = false;
 }
