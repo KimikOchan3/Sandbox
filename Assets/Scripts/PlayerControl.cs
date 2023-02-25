@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
 	
 	// !!ЭТО КОСТЫЛИ!! (скорее всего), !!ИЗМЕНИТЬ ПО ВОЗМОЖНОСТИ!!
 	
-	public bool CamRotEnabled = true;
+	public static bool CamRotEnabled = true;
 
     void Start()
     {
@@ -84,6 +84,9 @@ public class PlayerControl : MonoBehaviour
         PlayerMove();
         PlayerJump();
         BunnyHop();
+		
+		ToggleCR(!Input.GetKey(KeyCode.E)  && !Input.GetKey(KeyCode.Q));
+
     }
 
     void LateUpdate()
@@ -125,7 +128,7 @@ public class PlayerControl : MonoBehaviour
     void PlayerMove()
     {
         movement = (Vector3.ClampMagnitude(transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical"), 1f) * moveSpeed * bunnyHop + transform.up * movement.y);
-        Debug.Log(movement);
+        //Debug.Log(movement);
 
         if(Input.GetKey(KeyCode.LeftShift))
         {
@@ -146,16 +149,21 @@ public class PlayerControl : MonoBehaviour
             bunnyHop -= bunnyHopStop;
 
         bunnyHop = Mathf.Clamp(bunnyHop, 1, 5);
-    }
 }
 
-//Самый костыльный костыль
-public static void EnableCR()
-{
-    CamRotEnabled = true;
+
+
+// Самый костыльный костыль 
+public static void ToggleCR(bool state)
+	{
+		CamRotEnabled = state;
+		Cursor.visible = !state;
+		if(state){
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+		else{
+			Cursor.lockState = CursorLockMode.None;
+		}
+	}
 }
 
-public static void DisableCR()
-{
-    CamRotEnabled = false;
-}

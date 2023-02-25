@@ -1,0 +1,63 @@
+# MTL for MAP01.wad, map MAP01
+# Created by Ultimate Doom Builder 3.0.0.4036
+
+newmtl BRICK1
+Kd 1.0 1.0 1.0
+
+newmtl DOOR3
+Kd 1.0 1.0 1.0
+
+newmtl F_SKY1
+Kd 1.0 1.0 1.0
+
+newmtl FLAT5_4
+Kd 1.0 1.0 1.0
+
+newmtl MIDBRN1
+Kd 1.0 1.0 1.0
+
+newmtl RROCK10
+Kd 1.0 1.0 1.0
+
+newmtl STARTAN2
+Kd 1.0 1.0 1.0
+
+newmtl STEP3
+Kd 1.0 1.0 1.0
+
+newmtl STEP4
+Kd 1.0 1.0 1.0
+
+newmtl STEP6
+Kd 1.0 1.0 1.0
+
+newmtl STUCCO1
+Kd 1.0 1.0 1.0
+
+newmtl CEIL1_1
+Kd 1.0 1.0 1.0
+
+newmtl CEIL5_1
+Kd 1.0 1.0 1.0
+
+newmtl CEIL5_2
+Kd 1.0 1.0 1.0
+
+newmtl F_SKY1
+Kd 1.0 1.0 1.0
+
+newmtl FLAT19
+Kd 1.0 1.0 1.0
+
+newmtl FLAT5_2
+Kd 1.0 1.0 1.0
+
+newmtl FLOOR0_1
+Kd 1.0 1.0 1.0
+
+newmtl GRASS2
+Kd 1.0 1.0 1.0
+
+newmtl WOODVERT
+Kd 1.0 1.0 1.0
+

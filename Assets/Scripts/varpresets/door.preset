@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: door
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: -1465209106, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _data._json
+    value: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"lockstate","value":{"$content":true,"$type":"System.Boolean"},"$version":"A"},{"name":"angle","value":{"x":0.0,"y":-90.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"speed","value":{"$content":0.2,"$type":"System.Single"},"$version":"A"},{"name":"sound_open","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"sound_close","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"sound_locked","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _data._objectReferences.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: _data._objectReferences.Array.data[0]
+    value: 
+    objectReference: {fileID: 8300000, guid: 5acb4f457836ff7419b8aab70db36525, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _data._objectReferences.Array.data[1]
+    value: 
+    objectReference: {fileID: 8300000, guid: 78e9087f693dc9d4aa50850f67027b8f, type: 3}
+  - target: {fileID: 0}
+    propertyPath: _data._objectReferences.Array.data[2]
+    value: 
+    objectReference: {fileID: 8300000, guid: fc6c7359365cebd4280bb276d49a51d5, type: 3}
+  m_ExcludedProperties: []
