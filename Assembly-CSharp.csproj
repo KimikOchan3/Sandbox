@@ -49,6 +49,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Scripts\Player\inventory\Item.cs" />
+     <Compile Include="Assets\Scripts\Player\inventory\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
      <None Include="Assets\Bolt\Ludiq\Ludiq.Core\DotNetDocumentation\System.Web.Extensions.Design.xml" />
@@ -59,6 +61,7 @@
      <None Include="Assets\Bolt\Ludiq\Ludiq.Core\DotNetDocumentation\System.Data.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Bolt\Ludiq\Ludiq.Core\DotNetDocumentation\mscorlib.xml" />
+     <None Include="Assets\Itemsdata.txt" />
      <None Include="Assets\Bolt\Ludiq\Ludiq.Core\DotNetDocumentation\System.Security.xml" />
      <None Include="Assets\Bolt\Ludiq\Ludiq.Core\DotNetDocumentation\Microsoft.Build.Framework.xml" />
      <None Include="Assets\Bolt\Ludiq\Assemblies\MiscUtil.xml" />
